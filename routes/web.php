@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,3 +68,16 @@ Route::get('/cooling-section-machinery/', function () {
 Route::get('/ancilliary-machinery/', function () {
     return view('products/ancilliary-machinery');
 })->name('ancilliary-machinery');
+
+
+
+Auth::routes();
+
+
+Route::get('authenticated', [AdminController::class,'index'])->name('admin');
+Route::get('pages', [AdminController::class,'getPages'])->name('get-pages');
+Route::get('add-new-page', [AdminController::class,'addNewPage'])->name('add-new-page');
+Route::post('save-new-page', [AdminController::class,'saveNewPage'])->name('save-new-page');
+
+
+
