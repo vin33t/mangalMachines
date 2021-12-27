@@ -71,13 +71,19 @@ Route::get('/ancilliary-machinery/', function () {
 
 
 
+Route::get('/{slug}', [AdminController::class,'viewPage'])->name('view-page');
+
 Auth::routes();
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('authenticated', [AdminController::class,'index'])->name('admin');
+    Route::get('pages', [AdminController::class,'getPages'])->name('get-pages');
+    Route::get('add-new-page', [AdminController::class,'addNewPage'])->name('add-new-page');
+    Route::post('save-new-page', [AdminController::class,'saveNewPage'])->name('save-new-page');
+    Route::get('edit-page/{slug}', [AdminController::class,'editPage'])->name('edit-page');
+    Route::post('update-page/{slug}', [AdminController::class,'updatePage'])->name('update-page');
 
-Route::get('authenticated', [AdminController::class,'index'])->name('admin');
-Route::get('pages', [AdminController::class,'getPages'])->name('get-pages');
-Route::get('add-new-page', [AdminController::class,'addNewPage'])->name('add-new-page');
-Route::post('save-new-page', [AdminController::class,'saveNewPage'])->name('save-new-page');
+});
 
 
 

@@ -12,10 +12,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="admin/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="admin/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="admin/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -33,9 +33,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-sign-out-alt">LOGOUT</i>
-                </a>
+
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-primary" >
+                        <i class="fas fa-sign-out-alt">LOGOUT</i>
+                    </button>
+                </form>
             </li>
         </ul>
     </nav>

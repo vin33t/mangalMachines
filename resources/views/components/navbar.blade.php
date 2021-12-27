@@ -163,6 +163,22 @@
                             <a class="w-nav-anchor level_1" href="{{ route('contact-us') }}"><span class="w-nav-title">Contact Us</span><span
                                     class="w-nav-arrow"></span></a></li>
                         <li class="w-nav-close"></li>
+                        <li id="menu-item-508"
+                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children w-nav-item level_1 menu-item-508 togglable">
+                            <a class="w-nav-anchor level_1" href="#"><span class="w-nav-title">Blogs</span><span
+                                    class="w-nav-arrow"></span></a>
+                            <ul class="w-nav-list level_2">
+
+                                @foreach(\App\Models\Pages::all() as $page)
+                                <li id="menu-item-501"
+                                    class="{{ Request::route('slug') == $page->pageSlug ? 'current-menu-item' : ''}} menu-item menu-item-type-post_type menu-item-object-page page_item page-item-458 current_page_item w-nav-item level_2 menu-item-501">
+                                    <a class="w-nav-anchor level_2"
+                                       href="{{ route('view-page',['slug'=>$page->pageSlug]) }}"><span
+                                            class="w-nav-title">{{ $page->pageName }}</span><span
+                                            class="w-nav-arrow"></span></a></li>
+                                @endforeach
+                            </ul>
+                        </li>
                     </ul>
                     <div class="w-nav-options hidden"
                          onclick='return {&quot;mobileWidth&quot;:900,&quot;mobileBehavior&quot;:1}'></div>
