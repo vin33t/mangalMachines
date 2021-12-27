@@ -5,6 +5,7 @@
     <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'/>
     <!-- This site is optimized with the Yoast SEO plugin v17.6 - https://yoast.com/wordpress/plugins/seo/ --> <title>
         @yield('title') - Mangalmachines</title>
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="{{ asset('sitemap.xml') }}">
     <link rel="canonical" href="https://mangalmachines.com/"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="og:type" content="website"/>

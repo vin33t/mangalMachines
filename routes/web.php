@@ -75,8 +75,9 @@ Route::get('/{slug}', [AdminController::class,'viewPage'])->name('view-page');
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('authenticated', [AdminController::class,'index'])->name('admin');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('', [AdminController::class,'index'])->name('admin');
+    Route::get('auth', [AdminController::class,'index'])->name('admin');
     Route::get('pages', [AdminController::class,'getPages'])->name('get-pages');
     Route::get('add-new-page', [AdminController::class,'addNewPage'])->name('add-new-page');
     Route::post('save-new-page', [AdminController::class,'saveNewPage'])->name('save-new-page');
